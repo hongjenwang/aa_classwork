@@ -1,33 +1,26 @@
 
 def first_anagram?(str1, str2)
 
-    permutations(str1)
+    permutations(str1).include?(str2)
 
 end
 
 def permutations(str)
+    return [str] if str.length < 2
+    perms = permutations(str[0...-1])
 
-    (0...str.length).each do |i|
-        permutations(str[0...i] + str[i+1..-1])
-
+    arr_perm = []
+    perms.each do |perm|
+        (0...str.length).each do |i|
+            temp_perm = perm.dup
+            arr_perm << temp_perm.insert(i, str[-1])
+        end
+    end
+    arr_perm
 end
 
-1 2 3 4
-
-4
-34 43
-234 324 432
-1234 3124 4312 4321
-
-2 1 3 4
-
-4
-34 43
-134 314 341
-2134 3214 3421 3412
-
-# p first_anagram?("gizmo", "sally")    #=> false
-# p first_anagram?("elvis", "lives")    #=> true
+p first_anagram?("gizmo", "sally")    #=> false
+p first_anagram?("elvis", "lives")    #=> true
 
 def second_anagram?(str1, str2)
     str1.each_char do |letter|
@@ -62,6 +55,6 @@ def fourth_anagram?(str1, str2)
     false
 end
 
-p fourth_anagram?("gizmo", "sally")    #=> false
-p fourth_anagram?("elvis", "lives")    #=> true
+# p fourth_anagram?("gizmo", "sally")    #=> false
+# p fourth_anagram?("elvis", "lives")    #=> true
 

@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS question_follows
-DROP TABLE IF EXISTS question_likes
-DROP TABLE IF EXISTS replies
-DROP TABLE IF EXISTS questions
-DROP TABLE IF EXISTS users
+DROP TABLE IF EXISTS question_follows;
+DROP TABLE IF EXISTS question_likes;
+DROP TABLE IF EXISTS replies;
+DROP TABLE IF EXISTS questions;
+DROP TABLE IF EXISTS users;
 
 
 PRAGMA foreign_keys = ON;
@@ -106,3 +106,9 @@ CREATE TABLE question_likes (
     FOREIGN KEY (like_id) REFERENCES users(id),
     FOREIGN KEY (question_id) REFERENCES questions(id)
 );
+
+INSERT INTO
+    question_likes (like_id, question_id)
+VALUES
+    ((SELECT id FROM users WHERE users.fname = "Kia" AND users.lname = "Ghaderi"),
+    (SELECT id FROM questions WHERE questions.title = "Victor's Question"));

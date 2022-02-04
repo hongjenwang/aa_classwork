@@ -6,7 +6,6 @@ class ArtworksController < ApplicationController
     # end
 
     def index
-        debugger
         if params[:user_id]
             artwork = Artwork.where(artist_id: params[:user_id])
         else

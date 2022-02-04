@@ -5,7 +5,14 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new, :edit] do
     resources :artworks, only: :index
+    resources :artwork_shares, only: :index
+    resources :comments, only: :index
   end
-  resources :artworks, except: [:new, :edit]
-  resources :artwork_shares, except: [:new, :edit]
+
+  resources :artworks, except: [:new, :edit] do
+    resources :comments, only: :index
+  end
+
+  resources :artwork_shares, only: [:create, :destroy, :index]
+  resources :comments, except: [:new, :edit]
 end

@@ -17,8 +17,16 @@ class Artwork < ApplicationRecord
         foreign_key: :artist_id,
         class_name: :User
 
+    has_many :artwork_shares,
+        foreign_key: :artwork_id,
+        class_name: :ArtworkShare
+
+    has_many :shared_viewers,
+        through: :artwork_shares,
+        source: :viewer
+
     def unique_artist_title
-        matched_work = Artwork.joins(:artist).where(users: {id: self.artist_id}).where(artworks: {title: self.title})
+        matched_work = Artwork.joins(:artist).where(users: {id: self.artist_id}).where(artworks: {title: self.title}).where.not(artworks: {id: self.id})
         raise 'Artist/artwork title already exists' unless matched_work.empty?
     end
 

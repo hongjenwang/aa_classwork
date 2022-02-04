@@ -16,10 +16,18 @@ users = User.create([
 ])
 
 artworks = Artwork.create([
-    {title: 'Man coding', artist_id:1, image_url:'appacademy.com'},
+    {title: 'Man coding', artist_id:2, image_url:'appacademy.com'},
     {title:'Purple rain', artist_id:2, image_url:'prince.com'},
-    {title:'Beat it', artist_id:3, image_url:'ilikekids.com'},
-    {title:'Weird shit', artist_id:4, image_url:'picasso.com'},
+    {title:'Beat it', artist_id:2, image_url:'ilikekids.com'},
+    {title:'Weird shit', artist_id:5, image_url:'picasso.com'},
     {title:'mustache man', artist_id:5, image_url:'meltingclocks.com'}
 
+])
+
+artwork_shares = ArtworkShare.create([
+    {artwork_id:1, viewer_id:2},
+    {artwork_id:2, viewer_id:3},
+    {artwork_id:3, viewer_id:4},
+    {artwork_id:4, viewer_id:5},
+    {artwork_id:5, viewer_id:1}
 ])

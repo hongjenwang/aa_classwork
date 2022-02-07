@@ -1,8 +1,9 @@
 class ArtworkSharesController < ApplicationController
-    # def index
-    #     artwork_share = ArtworkShare.all
-    #     render json: artwork_share
-    # end
+    def index
+        artwork_share = ArtworkShare.where(viewer_id: params[:user_id])
+        render json: artwork_share
+ 
+    end
 
     # def show    
     #     artwork_share = ArtworkShare.find(params[:id])

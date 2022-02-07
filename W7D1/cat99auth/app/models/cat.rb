@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: cats
+#
+#  id          :bigint           not null, primary key
+#  name        :string           not null
+#  color       :string           not null
+#  birth_date  :date
+#  sex         :string(1)
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 require 'action_view'
 
 class Cat < ApplicationRecord

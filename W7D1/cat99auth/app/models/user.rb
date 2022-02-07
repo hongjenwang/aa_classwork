@@ -12,7 +12,15 @@ class User < ApplicationRecord
         self.session_token
     end
 
-    
+    def password=(password) 
+        @password = password
+        password_digest = BCrypt::Password.create(password)
+    end
 
+    def self.find_by_credentials(user_name, password)
+        user = User.find_by(username: username)
+        return nil if user.nil?
+        user.is_password?(password) ? user : nil
+    end
         
 end
